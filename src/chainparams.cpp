@@ -140,12 +140,30 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0x9bd1c477af8993947cdd9052c0e4c287fda95987b3cc8934b3769d7503852715"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
+
         /*vSeeds.emplace_back("seed.bitcoin.sipa.be", true); // Pieter Wuille, only supports x1, x5, x9, and xd
         vSeeds.emplace_back("dnsseed.bluematt.me", true); // Matt Corallo, only supports x9
         vSeeds.emplace_back("dnsseed.bitcoin.dashjr.org", false); // Luke Dashjr
         vSeeds.emplace_back("seed.bitcoinstats.com", true); // Christian Decker, supports x1 - xf
         vSeeds.emplace_back("seed.bitcoin.jonasschnelli.ch", true); // Jonas Schnelli, only supports x1, x5, x9, and xd
         vSeeds.emplace_back("seed.btc.petertodd.org", true); // Peter Todd, only supports x1, x5, x9, and xd*/
+
+        vSeeds.emplace_back("seeds.komodoplatform.com", false); // @kolo, doesn't support service bit filtering
+        // vSeeds.emplace_back("seeds.komodo.mewhub.com" , false); // @kolo, doesn't support service bit filtering
+
+	/* Decker */
+	/* The parameter at the end that has been changed from true to false in btc1 is "supportsServiceBitsFiltering". It indicates whether or not that node supports "service bits filtering".
+	
+	   Example of 'service bit filtering':
+	
+	   You can run nslookup seed.bitcoin.sipa.be, and get a list of bitcoin nodes.
+	   You can also run nslookup x1.seed.bitcoin.sipa.be, and get a list of nodes with NODE_NETWORK set.
+
+	   x1 is NODE_NETWORK, i.e. a full node
+	   x5 is NODE_NETWORK and NODE_BLOOM
+	   x9 is NODE_NETWORK and NODE_WITNESS
+	   xd (aka x13) is NODE_NETWORK, NODE_BLOOM, and NODE_WITNESS
+	*/
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
